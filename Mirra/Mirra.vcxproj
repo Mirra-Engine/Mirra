@@ -15,9 +15,11 @@
     <ClInclude Include="src\Mirra\Application.h" />
     <ClInclude Include="src\Mirra\Core.h" />
     <ClInclude Include="src\Mirra\EntryPoint.h" />
+    <ClInclude Include="src\Mirra\Logger.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mirra\Application.cpp" />
+    <ClCompile Include="src\Mirra\Logger.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -66,6 +68,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>ME_PLATFORM_WINDOWS;ME_BUILD_DLL;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Mirra\vendor\spdlog\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -79,6 +82,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Mirra\vendor\spdlog\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

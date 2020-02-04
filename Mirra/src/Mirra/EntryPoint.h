@@ -4,6 +4,12 @@
 extern Mirra::Application* Mirra::CreateApplication();
 
 int main(int argc, char** argv) {
+
+	Mirra::Logger::Init();
+
+	LOG_CORE_WARN("Initalized Logger...");
+	LOG_CLIENT_INFO("Welcome to Mirra Engine {0}", "Matt");
+	
 	auto app = Mirra::CreateApplication();
 	app->Run();
 	delete app;
