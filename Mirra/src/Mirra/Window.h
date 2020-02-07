@@ -3,6 +3,9 @@
 
 #include "Mirra/Core.h"
 #include "Mirra/Events/Event.h"
+#include "Mirra/Events/ApplicationEvent.h"
+#include "Mirra/Events/MouseEvent.h"
+#include "Mirra/Events/KeyEvent.h"
 
 namespace Mirra 
 {
@@ -13,7 +16,7 @@ namespace Mirra
 		unsigned int Height;
 
 		WindowProps(const std::string& title = "Mirra Engine", 
-			unsigned int width = 1920, unsigned int height = 1080) 
+			unsigned int width = 1280, unsigned int height = 720) 
 			: Title(title), Width(width), Height(height) 
 		{
 		
