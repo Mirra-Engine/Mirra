@@ -4,6 +4,7 @@
 
 #include "Core.h"
 #include "spdlog\spdlog.h"
+#include "spdlog\fmt\ostr.h"
 
 namespace Mirra {
 	class MIRRA_API Logger {
@@ -29,8 +30,8 @@ namespace Mirra {
 #define LOG_CORE_CRITICAL(...)   ::Mirra::Logger::getCoreLogger()->critical(__VA_ARGS__);
 
 // CLIENT LOGGER MACROS
-#define LOG_CLIENT_TRACE(...) ::Mirra::Logger::getClientLogger()->trace(__VA_ARGS__);
-#define LOG_CLIENT_INFO(...)  ::Mirra::Logger::getClientLogger()->info(__VA_ARGS__);
-#define LOG_CLIENT_WARN(...)  ::Mirra::Logger::getClientLogger()->warn(__VA_ARGS__);
-#define LOG_CLIENT_ERROR(...) ::Mirra::Logger::getClientLogger()->error(__VA_ARGS__);
-#define LOG_CLIENT_CRITICAL(...) ::Mirra::Logger::getClientLogger()->critical(__VA_ARGS__);
+#define LOG_TRACE(...) ::Mirra::Logger::getClientLogger()->trace(__VA_ARGS__);
+#define LOG_INFO(...)  ::Mirra::Logger::getClientLogger()->info(__VA_ARGS__);
+#define LOG_WARN(...)  ::Mirra::Logger::getClientLogger()->warn(__VA_ARGS__);
+#define LOG_ERROR(...) ::Mirra::Logger::getClientLogger()->error(__VA_ARGS__);
+#define LOG_CRITICAL(...) ::Mirra::Logger::getClientLogger()->critical(__VA_ARGS__);

@@ -9,3 +9,5 @@ public:
 Mirra::Application* Mirra::CreateApplication() {
 	return new SandBox();
 }
+
+//Change SDK version to 10+
