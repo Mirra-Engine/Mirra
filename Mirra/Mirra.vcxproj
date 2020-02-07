@@ -83,6 +83,7 @@
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -106,6 +107,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -130,6 +132,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -151,6 +154,8 @@
     <ClInclude Include="src\Mirra\Events\Event.h" />
     <ClInclude Include="src\Mirra\Events\KeyEvent.h" />
     <ClInclude Include="src\Mirra\Events\MouseEvent.h" />
+    <ClInclude Include="src\Mirra\Layer.h" />
+    <ClInclude Include="src\Mirra\LayerStack.h" />
     <ClInclude Include="src\Mirra\Logger.h" />
     <ClInclude Include="src\Mirra\Window.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -158,6 +163,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mirra\Application.cpp" />
+    <ClCompile Include="src\Mirra\Layer.cpp" />
+    <ClCompile Include="src\Mirra\LayerStack.cpp" />
     <ClCompile Include="src\Mirra\Logger.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\mpch.cpp">

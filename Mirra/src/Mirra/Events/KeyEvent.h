@@ -11,17 +11,17 @@ namespace Mirra {
 		inline int GetKeyCode() const { return m_KeyCode; }
 
 		//sets the category of the event
-		EVENT_CLASS_CATEGORY(EventCatategoryKeyboard | EventCatagoryInput)
+		EVENT_CLASS_CATEGORY(EventCatagoryKeyboard | EventCategoryInput)
 	protected:
 		//protected constructor
 		KeyEvent(int keycode)
 			: m_KeyCode(keycode) {}
 
 		//the actual keycode
-		int m_KeyCode
+		int m_KeyCode;
 	};
 	
-	class MIRRA_API KeyPressedEvent : public Event
+	class MIRRA_API KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
@@ -40,18 +40,20 @@ namespace Mirra {
 	private:
 		// how many times the key has been called since its been pressed down
 		int m_RepeatCount;
+		int m_KeyCode;
 	};
-	class MIRRA_API KeyReleasedEvent : public Event
+	class MIRRA_API KeyReleasedEvent : public KeyEvent
 	{
 	public :
 		KeyReleasedEvent(int keycode)
-			: KeyCode(keycode) {}
+			: KeyEvent(keycode) {}
+
 		std::string ToString() const override
 		{
 			std::stringstream ss;
 			ss << "KeyReleasedEvent: " << m_KeyCode;
 			return ss.str();
 		}
-		EVENT_CLASS_CATEGORY(KeyReleased)
+		EVENT_CLASS_TYPE(KeyReleased)
 	};
 }

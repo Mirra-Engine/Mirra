@@ -18,7 +18,7 @@ namespace Mirra {
 		}
 
 		EVENT_CLASS_TYPE(MouseMoved)
-			EVENT_CLASS_CATEGORY(EventCatagoryMouse | EventCategoryInput)
+		EVENT_CLASS_CATEGORY(EventCatagoryMouse | EventCategoryInput)
 	private:
 		float m_MouseX, m_MouseY;
 
@@ -42,24 +42,26 @@ namespace Mirra {
 		}
 
 		EVENT_CLASS_TYPE(MouseScrolled)
-			EVENT_CLASS_CATEGORY(EventCatagoryMouse | EventCategoryInput)
+		EVENT_CLASS_CATEGORY(EventCatagoryMouse | EventCategoryInput)
 	private:
 		float m_OffsetX, m_OffsetY;
 
-	}
+	};
 
 	class MIRRA_API MouseButtonEvent : public Event
 	{
 	public:
-		inline float getMouseButton() const { return m_Button; }
+		inline int getMouseButton() const { return m_Button; }
 
 		EVENT_CLASS_CATEGORY(EventCatagoryMouse | EventCategoryInput)
 	protected:
-		MouseMovedEvent(int button) : m_Button(button) {}
+		MouseButtonEvent(int button) 
+			: m_Button(button) {}
 
 		int m_Button;
 
-	}
+	};
+
 	class MIRRA_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
@@ -74,8 +76,9 @@ namespace Mirra {
 		}
 
 		EVENT_CLASS_TYPE(MouseButtonPressed)
-	
-	}
+
+	};
+
 	class MIRRA_API MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
@@ -91,5 +94,5 @@ namespace Mirra {
 
 		EVENT_CLASS_TYPE(MouseButtonReleased)
 
-	}
+	};
 }

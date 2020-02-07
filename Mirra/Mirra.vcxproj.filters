@@ -37,6 +37,12 @@
     <ClInclude Include="src\Mirra\Events\MouseEvent.h">
       <Filter>Mirra\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mirra\Layer.h">
+      <Filter>Mirra</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mirra\LayerStack.h">
+      <Filter>Mirra</Filter>
+    </ClInclude>
     <ClInclude Include="src\Mirra\Logger.h">
       <Filter>Mirra</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mirra\Application.cpp">
+      <Filter>Mirra</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mirra\Layer.cpp">
+      <Filter>Mirra</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mirra\LayerStack.cpp">
       <Filter>Mirra</Filter>
     </ClCompile>
     <ClCompile Include="src\Mirra\Logger.cpp">

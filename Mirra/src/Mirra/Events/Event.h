@@ -20,7 +20,7 @@ namespace Mirra {
 	enum EventCatagory {
 		None = 0,
 		EventCategoryApplication = BIT(0),
-		EventCatagoryInput = BIT(1),
+		EventCategoryInput = BIT(1),
 		EventCatagoryKeyboard = BIT(2),
 		EventCatagoryMouse = BIT(3),
 		EventCatagoryMouseButton = BIT(4)
@@ -35,6 +35,7 @@ namespace Mirra {
 	class MIRRA_API Event {
 		friend class EventDispatcher;
 	public:
+		bool m_Handled = false;
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
@@ -44,27 +45,8 @@ namespace Mirra {
 		{
 			return GetCategoryFlags() & category;
 		}
-	protected:
-		bool m_Handled = false;
 	};
 
-	//class EventDispatcher
-	//{
-	//public:
-	//	EventDispatcher(Event& event)
-	//		: m_Event
-	//	{
-	//	}
-	//	template<typename T> bool Dispatch(EventFn<T> func) {
-	//		if (m_Event.GetEventType() == T::GetStaticType()) {
-	//			m_Event.m_Handled = func(*(T*)&m_Event);
-	//			return true;
-	//		}
-	//		return false;
-	//	}
-	//private:
-	//	Event& m_Event;
-	//};
 	class EventDispatcher
 	{
 		template<typename T> using EventFn = std::function<bool(T&)>;
@@ -76,12 +58,12 @@ namespace Mirra {
 		}
 
 		// F will be deduced by the compiler
-		template<typename T, typename F>
+		template<typename T>
 		bool Dispatch(EventFn<T> func)
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.Handled = func(static_cast<T&>(m_Event));
+				m_Event.m_Handled = func(static_cast<T&>(m_Event));
 				return true;
 			}
 			return false;
