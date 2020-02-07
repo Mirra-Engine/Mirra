@@ -2,13 +2,13 @@
 
 #include "Application.h"
 #include "Mirra/Events/ApplicationEvent.h"
-#include "Mirra/Logger.h"
+#include <GLFW/glfw3.h>
 
 namespace Mirra {
 
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application()
@@ -17,11 +17,12 @@ namespace Mirra {
 	}
 
 	void Application::Run() {
-		WindowResizeEvent e(1200, 720);
-		if (e.IsInCategory(EventCategoryApplication)) {
-			LOG_TRACE(e);
+		 
+		while (m_Running) 
+		{
+			glClearColor(0, 1, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate();
 		}
-
-		while (true);
 	}
 }

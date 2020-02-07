@@ -7,41 +7,54 @@ workspace "Mirra"
 		"Dist"
 	}
 
-	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+	outputdir="%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+-- Include directory Relative to root folder
+IncludeDir = {}
+IncludeDir["GLFW"] = "Mirra/vendor/GLFW/include"
+
+include "Mirra/vendor/GLFW"
 
 project "Mirra"
 	location "Mirra"
 	kind "SharedLib"
 	language "C++"
-
-	targetdir  ("bin/".. outputdir .."/%{prj.name}")
-	objdir ("bin-int/".. outputdir .."/%{prj.name}")
-
+	
 	pchheader "mpch.h"
 	pchsource "Mirra/src/mpch.cpp"
+
+	targetdir ("bin/".. outputdir .."/%{prj.name}")
+	objdir ("bin-int/".. outputdir .."/%{prj.name}")
+
+	
 	files
 	{
 		"%{prj.name}/src/**.h",	
-		"%{prj.name}/src/**.cpp"	
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
-
-		defines 
-		{
-			"ME_PLATFORM_WINDOWS",
-			"ME_BUILD_DLL",
-			"_WINDLL"		
-		}
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/".. outputdir .."/SandBox")
-		}
+	defines 
+	{
+		"ME_PLATFORM_WINDOWS",
+		"ME_BUILD_DLL",
+		"_WINDLL"		
+	}
+	postbuildcommands
+	{
+		("{COPY} %{cfg.buildtarget.relpath} ../bin/".. outputdir .."/SandBox")
+	}
 filter "system.Windows"
 		cppdialect "C++17"
 		staticruntime "On"
@@ -71,8 +84,8 @@ project "SandBox"
 
 	files
 	{
-		"%{prj.name}/src/**.h",	
-		"%{prj.name}/src/**.cpp"	
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs

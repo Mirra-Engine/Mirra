@@ -1,4 +1,6 @@
 [submodule "Mirra/vendor/spdlog"]
 	path = Mirra/vendor/spdlog
 	url = https://github.com/gabime/spdlog
-
+[submodule "Mirra/vendor/glfw"]
+	path = Mirra/vendor/glfw
+	url = https://github.com/Mirra-Engine/glfw
