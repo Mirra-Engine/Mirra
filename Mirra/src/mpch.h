@@ -11,7 +11,6 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
-
 #include "Mirra\Logger.h"
 
 #ifdef ME_PLATFORM_WINDOWS

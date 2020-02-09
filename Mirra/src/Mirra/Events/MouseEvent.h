@@ -32,7 +32,7 @@ namespace Mirra {
 
 		inline float getOffsetX() const { return m_OffsetX; }
 
-		inline float getoffsetY() const { return m_OffsetY; }
+		inline float getOffsetY() const { return m_OffsetY; }
 
 		std::string ToString() const override
 		{
@@ -51,7 +51,7 @@ namespace Mirra {
 	class MIRRA_API MouseButtonEvent : public Event
 	{
 	public:
-		inline int getMouseButton() const { return m_Button; }
+		inline int GetMouseButton() const { return m_Button; }
 
 		EVENT_CLASS_CATEGORY(EventCatagoryMouse | EventCategoryInput)
 	protected:

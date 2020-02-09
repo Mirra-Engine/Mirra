@@ -12,8 +12,12 @@ workspace "Mirra"
 -- Include directory Relative to root folder
 IncludeDir = {}
 IncludeDir["GLFW"] = "Mirra/vendor/GLFW/include"
+IncludeDir["Glad"] = "Mirra/vendor/Glad/include"
+IncludeDir["ImGui"] = "Mirra/vendor/imgui"
 
 include "Mirra/vendor/GLFW"
+include "Mirra/vendor/Glad"
+include "Mirra/vendor/imgui"
 
 project "Mirra"
 	location "Mirra"
@@ -37,11 +41,15 @@ project "Mirra"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 	links
 	{
 		"GLFW",
+		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
@@ -49,7 +57,8 @@ project "Mirra"
 	{
 		"ME_PLATFORM_WINDOWS",
 		"ME_BUILD_DLL",
-		"_WINDLL"		
+		"_WINDLL",
+		"GLFW_INCLUDE_NONE"
 	}
 	postbuildcommands
 	{

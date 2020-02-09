@@ -1,7 +1,8 @@
 #include "mpch.h"
 #include "WindowsWindow.h"
 
-
+#include <Glad/glad.h>
+#include <GLFW/glfw3.h>
 
 namespace Mirra {
 
@@ -37,11 +38,14 @@ namespace Mirra {
 			int success = glfwInit();
 			ME_CORE_ASSERT(success, "you could not initilize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
-				s_GLFWInitilized = true;
+			s_GLFWInitilized = true;
 
 		}
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		ME_CORE_ASSERT(status, "Failed to initalize Glad.. ");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -88,7 +92,12 @@ namespace Mirra {
 			}
 
 		});
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode) {
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
+			KeyTypedEvent event(keycode);
+			data.EventCallback(event);
+		});
 		// Window Mouse Buttons
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);

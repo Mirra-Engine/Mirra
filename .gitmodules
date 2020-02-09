@@ -4,3 +4,6 @@
 [submodule "Mirra/vendor/glfw"]
 	path = Mirra/vendor/glfw
 	url = https://github.com/Mirra-Engine/glfw
+[submodule "Mirra/vendor/imgui"]
+	path = Mirra/vendor/imgui
+	url = https://github.com/Mirra-Engine/imgui

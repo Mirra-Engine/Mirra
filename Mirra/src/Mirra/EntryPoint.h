@@ -7,8 +7,7 @@ int main(int argc, char** argv) {
 
 	Mirra::Logger::Init();
 
-	LOG_CORE_WARN("Initalized Logger...");
-	LOG_INFO("Welcome to Mirra Engine {0}", "Matt");
+	LOG_CORE_INFO("Initalized Logger...");
 	
 	auto app = Mirra::CreateApplication();
 	app->Run();

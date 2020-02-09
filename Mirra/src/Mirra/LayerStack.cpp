@@ -1,6 +1,5 @@
 #include "mpch.h"
 #include "LayerStack.h"
-
 namespace Mirra {
 
 	LayerStack::LayerStack()

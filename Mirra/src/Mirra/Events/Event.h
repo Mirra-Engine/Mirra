@@ -13,7 +13,7 @@ namespace Mirra {
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved, // Window Events 
 		AppTick, AppUpdate, AppRender,
-		KeyPressed, KeyReleased,	// Key Events
+		KeyPressed, KeyReleased, KeyTyped,	// Key Events
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled // MouseEvents
 	};
 
